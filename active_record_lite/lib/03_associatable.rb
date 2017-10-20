@@ -52,7 +52,7 @@ module Associatable
       id = send(b_options.foreign_key)
       b_options.model_class.where(b_options.primary_key => id).first
     end
-
+    assoc_options[name] = b_options
   end
 
   def has_many(name, options = {})
@@ -64,7 +64,7 @@ module Associatable
   end
 
   def assoc_options
-    # Wait to implement this in Phase IVa. Modify `belongs_to`, too.
+    @assoc_options ||= {}
   end
 end
 
